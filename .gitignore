@@ -1,0 +1,18 @@
+# Audio files
+*.mp3
+*.mp4
+*.mpeg
+*.mpga
+*.m4a
+*.wav
+*.webm
+*.ogg
+*.flac
+*.aac
+*.wma
+*.opus
+
+# Python/local environment
+.venv/
+__pycache__/
+*.py[cod]
