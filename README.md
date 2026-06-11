@@ -141,6 +141,31 @@ The script loads the Whisper `base` model and saves the transcription to:
 transcripts/transcription_your-audio-file.txt
 ```
 
+## Whisper Model Variations
+
+This project uses OpenAI's official Whisper package. Whisper provides multiple model sizes, and the model is selected in `main.py`:
+
+```python
+model = whisper.load_model("base")
+```
+
+You can replace `"base"` with another available model name:
+
+| Model | Approx. VRAM | Relative speed | Notes |
+| --- | ---: | ---: | --- |
+| `tiny` | ~1 GB | ~10x | Fastest and lightest option, but usually less accurate. |
+| `base` | ~1 GB | ~7x | Good default for quick local transcription. This is the model currently used by the script. |
+| `small` | ~2 GB | ~4x | Better accuracy than `base`, with more memory and processing time required. |
+| `medium` | ~5 GB | ~2x | Stronger accuracy, especially for harder audio, but slower. |
+| `large` | ~10 GB | 1x | Highest accuracy option, with the largest hardware requirements. |
+| `turbo` | ~6 GB | ~8x | Optimized for fast transcription with strong quality. It is not intended for translation tasks. |
+
+English-only versions are also available for some model sizes by adding `.en`, such as `tiny.en`, `base.en`, `small.en`, and `medium.en`. Use those when the audio is English and you want an English-specialized model.
+
+Larger models usually produce better transcriptions, but they also take longer and need more memory. If transcription is slow, start with `base` or `small`; if quality is more important than speed, try `medium`, `large`, or `turbo`.
+
+For translation from non-English speech into English, use one of the multilingual models such as `medium` or `large` instead of `turbo`.
+
 ## Supported Input Formats
 
 The script treats these formats as supported by Whisper:
@@ -150,3 +175,8 @@ The script treats these formats as supported by Whisper:
 ```
 
 Other formats are converted to `.mp3` in `audio/converted/` before transcription.
+
+## Resources
+
+- [OpenAI Whisper official GitHub repository](https://github.com/openai/whisper)
+- [OpenAI Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md)
