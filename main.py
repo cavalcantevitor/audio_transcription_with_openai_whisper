@@ -6,8 +6,9 @@ BASE_DIR = Path.cwd()
 AUDIO_DIR = BASE_DIR / "audio"
 RAW_AUDIO_DIR = AUDIO_DIR / "raw"
 CONVERTED_AUDIO_DIR = AUDIO_DIR / "converted"
+TRANSCRIPTS_DIR = BASE_DIR / "transcripts"
 
-FILE = "WhatsApp Ptt 2026-06-09 at 20.55.13.ogg"
+FILE = "WhatsApp Ptt 2026-06-10 at 22.16.43.ogg"
 FILE_PATH = RAW_AUDIO_DIR / FILE
 
 # Converting the audio file into the supported formats
@@ -22,4 +23,7 @@ else:
 # Transcribing the audio file
 model = whisper.load_model("base")
 result = model.transcribe(str(TRANSCRIBE_PATH))
-print(type(result["text"]))
+
+# Writing the transcription in a .txt file
+with open(TRANSCRIPTS_DIR / f"transcription_{FILE_PATH.stem}.txt", "w", encoding="utf-8") as file:
+    file.write(str(result["text"]))
