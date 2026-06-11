@@ -8,7 +8,7 @@ RAW_AUDIO_DIR = AUDIO_DIR / "raw"
 CONVERTED_AUDIO_DIR = AUDIO_DIR / "converted"
 TRANSCRIPTS_DIR = BASE_DIR / "transcripts"
 
-FILE = "WhatsApp Ptt 2026-06-10 at 22.16.43.ogg"
+FILE = ""
 FILE_PATH = RAW_AUDIO_DIR / FILE
 
 # Converting the audio file into the supported formats
