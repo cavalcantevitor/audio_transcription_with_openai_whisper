@@ -2,17 +2,18 @@
 
 Small Python project for transcribing local audio files with OpenAI Whisper.
 
-The script reads an audio file from `audio/raw/`, converts it to `.mp3` when the original format is not directly supported, and prints the transcription text in the terminal.
+The script reads an audio file from `audio/raw/`, converts it to `.mp3` when the original format is not directly supported, and saves the transcription as a `.txt` file in `transcripts/`.
 
 ## Project Structure
 
 ```text
 .
 ├── audio/
-│   ├── raw/
-│   └── converted/
-├── main.py
+│   ├── converted/
+│   └── raw/
+├── .gitignore
 ├── transcripts/
+├── main.py
 └── requirements.txt
 ```
 
@@ -20,9 +21,9 @@ Folder purpose:
 
 - `audio/raw/`: original audio files.
 - `audio/converted/`: audio files generated during conversion.
-- `transcripts/`: place for saved transcription outputs later.
+- `transcripts/`: saved transcription text files.
 
-Audio files are ignored by git, so local recordings and converted files stay out of the repository. `.gitkeep` files keep the empty folders available in git.
+Audio files, generated transcript `.txt` files, virtual environments, and Python cache files are ignored by git. `.gitkeep` files keep the empty project folders available in git.
 
 ## Installation
 
@@ -134,14 +135,18 @@ Run the script:
 python main.py
 ```
 
-The script loads the Whisper `base` model and prints the transcription text.
+The script loads the Whisper `base` model and saves the transcription to:
+
+```text
+transcripts/transcription_your-audio-file.txt
+```
 
 ## Supported Input Formats
 
 The script treats these formats as supported by Whisper:
 
 ```text
-.mp3, .mp4, .mpeg, .mpga, .m4a, .wav, .webm
+.mp3, .mp4, .mpeg, .mpga, .m4a, .ogg, .wav, .webm
 ```
 
 Other formats are converted to `.mp3` in `audio/converted/` before transcription.
