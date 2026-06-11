@@ -179,4 +179,5 @@ Other formats are converted to `.mp3` in `audio/converted/` before transcription
 ## Resources
 
 - [OpenAI Whisper official GitHub repository](https://github.com/openai/whisper)
+- [pydub official GitHub repository](https://github.com/jiaaro/pydub)
 - [OpenAI Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md)
